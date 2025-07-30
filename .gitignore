@@ -1,0 +1,171 @@
+# Bash Scripting Project .gitignore
+
+# STEP 1: Build and compilation artifacts
+build/
+dist/
+bin/
+*.o
+*.a
+*.so
+*.dylib
+*.exe
+*.out
+
+# STEP 2: Log files and temporary files
+*.log
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# STEP 3: Python virtual environments and cache
+venv/
+env/
+cronjob/myenv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+
+# STEP 4: Node.js dependencies (if any)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# STEP 5: IDE and editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.settings/
+
+# STEP 6: OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# STEP 7: Backup files
+*.bak
+*.backup
+*.orig
+*.rej
+
+# STEP 8: Test and coverage reports
+coverage/
+.coverage
+.pytest_cache/
+.tox/
+htmlcov/
+.nyc_output/
+
+# STEP 9: Documentation generated files
+docs/_build/
+docs/build/
+site/
+.sphinx/
+
+# STEP 10: Package and distribution files
+*.tar.gz
+*.zip
+*.deb
+*.rpm
+*.dmg
+*.pkg
+
+# STEP 11: Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# STEP 12: Configuration files with sensitive data
+.env
+.env.local
+.env.production
+config.local
+secrets.conf
+
+# STEP 13: Makefile generated files
+.depend
+*.d
+Makefile.bak
+
+# STEP 14: Profiling and debugging files
+gmon.out
+*.gcov
+*.gcda
+*.gcno
+callgrind.out.*
+massif.out.*
+profile_report.txt
+
+# STEP 15: Cron and system files
+*.pid
+*.lock
+/var/
+/tmp/
+
+# STEP 16: Exercise specific ignores
+exercises/tests/temp/
+exercises/solutions/temp/
+makefile_exercises/temp/
+
+# STEP 17: Backup directories
+backups/
+backup_*/
+*_backup/
+
+# STEP 18: Compressed files
+*.7z
+*.rar
+*.tar
+*.tar.bz2
+*.tar.xz
+*.tgz
+
+# STEP 19: Security and certificate files
+*.pem
+*.key
+*.crt
+*.csr
+*.p12
+*.pfx
+
+# STEP 20: Local development files
+local/
+.local/
+dev/
+development/
+
+# STEP 21: Shell history and cache
+.bash_history
+.zsh_history
+.history
+.cache/
+
+# STEP 22: Docker files (optional)
+.dockerignore
+docker-compose.override.yml
+
+# STEP 23: Monitoring and metrics
+metrics/
+monitoring/
+*.metrics
+
+# STEP 24: Custom project ignores
+# Add any project-specific files to ignore below
+test.txt
+sample.log
+output.txt

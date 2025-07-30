@@ -1,0 +1,8 @@
+# Python Package Requirements File
+# This file specifies the exact versions of Python packages needed for the project
+# Use: pip install -r requirements.txt to install all dependencies
+
+# STEP 1: Data manipulation and analysis library
+# pandas is used for reading CSV files and data processing
+# Version 2.1.4 ensures compatibility and stable functionality
+pandas==2.1.4

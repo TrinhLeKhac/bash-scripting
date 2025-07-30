@@ -1,0 +1,26 @@
+# Cron Job Configuration File
+# This file contains the cron schedule for automated execution of the crawler script
+# Format: minute hour day month weekday command
+
+# STEP 1: Cron time specification
+# * * * * * means run every minute
+# Field 1: Minute (0-59) - * means every minute
+# Field 2: Hour (0-23) - * means every hour  
+# Field 3: Day of month (1-31) - * means every day
+# Field 4: Month (1-12) - * means every month
+# Field 5: Day of week (0-7, 0 and 7 are Sunday) - * means every day of week
+
+# STEP 2: Change to working directory
+# cd command ensures we're in the correct directory before execution
+# This is important because cron jobs run with minimal environment
+
+# STEP 3: Execute the bash script
+# /bin/bash run.sh executes our main script with full path to bash interpreter
+# Using full path ensures the script runs regardless of PATH environment
+
+# STEP 4: Output redirection
+# >> logs/iris.log redirects standard output to log file (append mode)
+# 2>&1 redirects standard error to the same location as standard output
+# This captures both success messages and errors in the same log file
+
+* * * * * cd /home/quandv/Documents/fsds/m1/linux/scripts/cronjob && /bin/bash run.sh >> logs/iris.log 2>&1
