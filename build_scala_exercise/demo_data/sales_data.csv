@@ -1,0 +1,21 @@
+date,product,category,quantity,price,region
+2023-01-01,Laptop Pro,Electronics,2,1500.00,North
+2023-01-02,Smartphone X,Electronics,8,900.00,South
+2023-01-03,Programming Book,Education,15,45.00,East
+2023-01-04,Office Desk,Furniture,3,450.00,West
+2023-01-05,4K Monitor,Electronics,5,650.00,North
+2023-01-06,Ergonomic Chair,Furniture,4,280.00,South
+2023-01-07,Gaming Tablet,Electronics,6,750.00,East
+2023-01-08,Technical Manual,Education,25,35.00,West
+2023-01-09,Mechanical Keyboard,Electronics,12,120.00,North
+2023-01-10,Wireless Mouse,Electronics,15,45.00,South
+2023-01-11,Noise-Canceling Headphones,Electronics,8,200.00,East
+2023-01-12,HD Webcam,Electronics,6,150.00,West
+2023-01-13,Laser Printer,Electronics,2,400.00,North
+2023-01-14,Document Scanner,Electronics,3,320.00,South
+2023-01-15,LED Desk Lamp,Furniture,10,85.00,East
+2023-01-16,External SSD,Electronics,7,180.00,West
+2023-01-17,Coding Bootcamp,Education,5,2000.00,North
+2023-01-18,Standing Desk,Furniture,2,800.00,South
+2023-01-19,Graphics Card,Electronics,3,1200.00,East
+2023-01-20,Office Software,Software,20,150.00,West

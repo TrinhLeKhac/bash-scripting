@@ -1,0 +1,143 @@
+plugins {
+    id 'scala'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+    id 'com.github.ben-manes.versions' version '0.46.0'
+}
+
+group = 'com.example'
+version = '1.0.0'
+sourceCompatibility = '11'
+
+ext {
+    scalaVersion = '2.12.17'
+    scalaBinaryVersion = '2.12'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Scala Library
+    implementation "org.scala-lang:scala-library:${scalaVersion}"
+    
+    // Core Dependencies
+    implementation 'org.typelevel:cats-core_2.12:2.9.0'
+    implementation 'com.typesafe:config:1.4.2'
+    
+    // Logging
+    implementation 'ch.qos.logback:logback-classic:1.4.7'
+    implementation 'org.slf4j:slf4j-api:2.0.7'
+    
+    // JSON Processing
+    implementation 'io.circe:circe-core_2.12:0.14.5'
+    implementation 'io.circe:circe-generic_2.12:0.14.5'
+    implementation 'io.circe:circe-parser_2.12:0.14.5'
+    
+    // Testing
+    testImplementation 'org.scalatest:scalatest_2.12:3.2.15'
+    testImplementation 'org.scalatestplus:mockito-4-6_2.12:3.2.15.0'
+    testRuntimeOnly 'org.scala-lang.modules:scala-xml_2.12:2.1.0'
+}
+
+// Scala compilation settings
+tasks.withType(ScalaCompile) {
+    scalaCompileOptions.additionalParameters = [
+        '-deprecation',
+        '-encoding', 'UTF-8',
+        '-feature',
+        '-unchecked',
+        '-Xlint',
+        '-Ywarn-dead-code'
+    ]
+}
+
+// Application settings
+application {
+    mainClass = 'com.example.Main'
+}
+
+// Test settings
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+        exceptionFormat "full"
+    }
+    maxHeapSize = "2g"
+}
+
+// Shadow JAR settings (Fat JAR)
+shadowJar {
+    archiveBaseName = project.name
+    archiveClassifier = 'all'
+    archiveVersion = project.version
+    
+    // Merge strategy for conflicting files
+    mergeServiceFiles()
+    
+    // Exclude signatures
+    exclude 'META-INF/*.SF'
+    exclude 'META-INF/*.DSA'
+    exclude 'META-INF/*.RSA'
+    
+    // Transform resources
+    transform(com.github.jengelman.gradle.plugins.shadow.transformers.AppendingTransformer) {
+        resource = 'reference.conf'
+    }
+}
+
+// Custom tasks
+task printClasspath {
+    doLast {
+        println "Compile classpath:"
+        configurations.compileClasspath.each { println "  ${it}" }
+    }
+}
+
+task fatJar(type: Jar) {
+    archiveBaseName = project.name + '-fat'
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+// Dependency updates task configuration
+dependencyUpdates {
+    checkForGradleUpdate = true
+    outputFormatter = "json"
+    outputDir = "build/dependencyUpdates"
+    reportfileName = "report"
+}
+
+// JVM settings for compilation and runtime
+tasks.withType(JavaExec) {
+    jvmArgs = ['-Xmx4g', '-XX:+UseG1GC']
+}
+
+// Source sets configuration
+sourceSets {
+    main {
+        scala {
+            srcDirs = ['src/main/scala']
+        }
+        resources {
+            srcDirs = ['src/main/resources']
+        }
+    }
+    test {
+        scala {
+            srcDirs = ['src/test/scala']
+        }
+        resources {
+            srcDirs = ['src/test/resources']
+        }
+    }
+}
+
+// Wrapper configuration
+wrapper {
+    gradleVersion = '8.1.1'
+    distributionType = Wrapper.DistributionType.BIN
+}
