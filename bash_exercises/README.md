@@ -65,7 +65,7 @@ bash solutions/exercise_1_solution.sh --help
 ### Basic Examples
 ```bash
 # Calculator
-cd exercises
+cd bash_exercises
 bash solutions/exercise_1_solution.sh 15 + 25
 
 # File Organizer

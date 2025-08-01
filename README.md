@@ -11,6 +11,7 @@ bash_scripting/
 ├── cronjob/                   # Automated data crawling project
 ├── exercises/                 # 15 comprehensive practice exercises
 ├── makefile_exercises/        # 5 Makefile automation exercises
+├── build_python_exercise/     # Python & PySpark data processing examples
 └── README.md                  # This comprehensive guide
 ```
 
@@ -19,21 +20,21 @@ bash_scripting/
 ### 1. Basic Script (basic_script.sh)
 Learn fundamental bash scripting concepts:
 ```bash
-cd scripts && bash basic_script.sh 5
+cd bash_scripts && bash basic_script.sh 5
 ```
 **Covers:** Variables, conditionals, loops, functions, arrays, string manipulation
 
 ### 2. Install Me (install_me.sh)
 Simulate program installation with user confirmation:
 ```bash
-cd scripts && bash install_me.sh
+cd bash_scripts && bash install_me.sh
 ```
 **Covers:** User input, conditional processing, string comparison
 
 ### 3. Calculate Frequencies (calculate_frequency.sh)
 Calculate frequency of flower species in CSV data:
 ```bash
-cd scripts && bash calculate_frequency.sh ../data
+cd bash_scripts && bash calculate_frequency.sh ../data
 ```
 **Covers:** File processing, arrays, data analysis, loops
 
@@ -42,35 +43,35 @@ cd scripts && bash calculate_frequency.sh ../data
 ### 4. File Monitor (file_monitor.sh)
 Monitor file changes with advanced features:
 ```bash
-cd scripts && bash file_monitor.sh ../data/data1.csv 2
+cd bash_scripts && bash file_monitor.sh ../data/data1.csv 2
 ```
 **Features:** Real-time monitoring, logging, color output, configurable intervals
 
 ### 5. CSV Processor (csv_processor.sh)
 Process and analyze CSV data interactively:
 ```bash
-cd scripts && bash csv_processor.sh ../data/data1.csv interactive
+cd bash_scripts && bash csv_processor.sh ../data/data1.csv interactive
 ```
 **Features:** Statistical analysis, data filtering, interactive menus
 
 ### 6. System Monitor (system_monitor.sh)
 Monitor system resources continuously:
 ```bash
-cd scripts && bash system_monitor.sh 3
+cd bash_scripts && bash system_monitor.sh 3
 ```
 **Features:** CPU/Memory/Disk monitoring, CSV logging, color-coded alerts
 
 ### 7. Backup Manager (backup_manager.sh)
 Comprehensive backup management system:
 ```bash
-cd scripts && bash backup_manager.sh ../data ./backups
+cd bash_scripts && bash backup_manager.sh ../data ./backups
 ```
 **Features:** Automated backups, compression, restoration, cleanup
 
 ### 8. Log Analyzer (log_analyzer.sh)
 Analyze log files for patterns and statistics:
 ```bash
-cd scripts && bash log_analyzer.sh sample.log
+cd bash_scripts && bash log_analyzer.sh sample.log
 ```
 **Features:** Pattern detection, statistical analysis, report generation
 
@@ -114,7 +115,7 @@ tail -f logs/iris.log logs/crawler.log
 
 ### Basic Level (1-5)
 ```bash
-cd exercises
+cd bash_exercises
 
 # Calculator Script
 bash solutions/exercise_1_solution.sh 10 + 5
@@ -202,6 +203,65 @@ make -f exercise_5/Makefile package-all
 - Implement cross-platform builds and pattern rules
 - Create reusable build templates
 - Integrate with Docker and CI/CD pipelines
+
+## Python & PySpark Data Processing Examples
+
+### Overview
+Comprehensive collection of Python and PySpark examples for data processing, including WordCount, data analysis, ETL pipelines, and visualization.
+
+### Quick Start
+```bash
+cd build_python_exercise
+
+# Run all examples
+./run_examples.sh all
+
+# Or step by step
+./run_examples.sh setup    # Setup environment
+./run_examples.sh data     # Generate sample data
+./run_examples.sh python   # Run Python examples
+./run_examples.sh pyspark  # Run PySpark examples
+```
+
+### PySpark Examples
+```bash
+cd build_python_exercise/pyspark_examples
+
+# WordCount - Count word frequencies in text
+python wordcount.py ../data/sample_text.txt
+
+# Data Analysis - Analyze CSV data with basic operations
+python data_analysis.py ../data/sample_data.csv
+
+# ETL Pipeline - Complete Extract, Transform, Load pipeline
+python etl_pipeline.py ../data/sample_data.csv ../output/etl_result
+```
+
+### Python Examples
+```bash
+cd build_python_exercise/python_examples
+
+# Pandas Analysis - Detailed data analysis with visualization
+python pandas_analysis.py ../data/sample_data.csv
+
+# Data Generator - Create sample data for other examples
+python data_generator.py 1000
+```
+
+### Key Features
+- **PySpark WordCount**: Text processing with word frequency analysis
+- **Data Analysis**: Statistical analysis and data exploration
+- **ETL Pipeline**: Complete data transformation workflow
+- **Pandas Integration**: Advanced analysis with visualization
+- **Automated Setup**: One-command environment setup
+- **Sample Data Generation**: Create test datasets
+
+### Learning Objectives
+- Master PySpark DataFrame operations and SQL functions
+- Implement ETL pipelines with data validation
+- Create data visualizations with matplotlib and seaborn
+- Handle missing data and data cleaning
+- Optimize Spark applications for performance
 
 ## Key Bash Concepts and Patterns
 
@@ -302,7 +362,7 @@ tail -f cronjob/logs/iris.log cronjob/logs/crawler.log
 grep -r -i "error\|exception\|fail" . --include="*.log"
 
 # Analyze script performance
-bash -x scripts/system_monitor.sh 1
+bash -x bash_scripts/system_monitor.sh 1
 ```
 
 ### Debugging Tips
@@ -381,17 +441,17 @@ git --version
 git clone <repository>
 cd bash_scripting
 
-# Make scripts executable
-chmod +x scripts/*.sh
+# Make bash_scripts executable
+chmod +x bash_scripts/*.sh
 
 # Test basic functionality
-cd scripts && bash basic_script.sh 5
+cd bash_scripts && bash basic_script.sh 5
 
 # Setup cronjob (optional)
 cd cronjob && chmod +x run.sh && ./run.sh
 
-# Try exercises
-cd exercises && bash solutions/exercise_1_solution.sh 10 + 5
+# Try bash_exercises
+cd bash_exercises && bash solutions/exercise_1_solution.sh 10 + 5
 ```
 
 ### Learning Path
@@ -402,5 +462,17 @@ cd exercises && bash solutions/exercise_1_solution.sh 10 + 5
 5. **Tackle exercises 6-10** for intermediate skills
 6. **Master exercises 11-15** for advanced system administration
 7. **Learn Makefile automation** for build system expertise
+8. **Explore Python & PySpark** for data processing and analysis
 
-This comprehensive guide provides everything needed to master bash scripting from basic concepts to advanced automation and system administration tasks.
+### Python & PySpark Quick Start
+```bash
+# Try Python data processing examples
+cd build_python_exercise
+./run_examples.sh all
+
+# Individual examples
+./run_examples.sh pyspark  # PySpark WordCount, Data Analysis, ETL
+./run_examples.sh python   # Pandas analysis with visualization
+```
+
+This comprehensive guide provides everything needed to master bash scripting from basic concepts to advanced automation, system administration, and data processing tasks with Python and PySpark.

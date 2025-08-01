@@ -118,8 +118,8 @@ profile_report.txt
 /tmp/
 
 # STEP 16: Exercise specific ignores
-exercises/tests/temp/
-exercises/solutions/temp/
+bash_exercises/tests/temp/
+bash_exercises/solutions/temp/
 makefile_exercises/temp/
 
 # STEP 17: Backup directories
