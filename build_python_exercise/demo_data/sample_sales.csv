@@ -1,0 +1,16 @@
+date,product,category,quantity,price,region
+2023-01-01,Laptop,Electronics,2,1200.00,North
+2023-01-02,Phone,Electronics,5,800.00,South
+2023-01-03,Book,Education,10,25.00,East
+2023-01-04,Desk,Furniture,1,300.00,West
+2023-01-05,Monitor,Electronics,3,400.00,North
+2023-01-06,Chair,Furniture,2,150.00,South
+2023-01-07,Tablet,Electronics,4,600.00,East
+2023-01-08,Notebook,Education,20,5.00,West
+2023-01-09,Keyboard,Electronics,8,75.00,North
+2023-01-10,Mouse,Electronics,10,25.00,South
+2023-01-11,Headphones,Electronics,6,100.00,East
+2023-01-12,Webcam,Electronics,3,80.00,West
+2023-01-13,Printer,Electronics,1,250.00,North
+2023-01-14,Scanner,Electronics,2,180.00,South
+2023-01-15,Lamp,Furniture,4,45.00,East

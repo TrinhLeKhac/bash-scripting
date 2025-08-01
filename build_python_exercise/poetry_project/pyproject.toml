@@ -1,0 +1,86 @@
+[tool.poetry]
+name = "poetry-demo"
+version = "1.0.0"
+description = "Modern Poetry packaging demo"
+authors = ["Demo Author <demo@example.com>"]
+readme = "README.md"
+homepage = "https://github.com/example/poetry-demo"
+repository = "https://github.com/example/poetry-demo"
+documentation = "https://poetry-demo.readthedocs.io"
+keywords = ["poetry", "packaging", "demo"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+requests = "^2.28.0"
+click = "^8.0.0"
+pydantic = "^1.10.0"
+rich = {version = "^12.0.0", optional = true}
+typer = {version = "^0.7.0", optional = true}
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.0.0"
+pytest-cov = "^4.0.0"
+black = "^22.0.0"
+flake8 = "^5.0.0"
+mypy = "^1.0.0"
+pre-commit = "^2.20.0"
+
+[tool.poetry.group.docs.dependencies]
+sphinx = "^5.0.0"
+sphinx-rtd-theme = "^1.0.0"
+myst-parser = "^0.18.0"
+
+[tool.poetry.extras]
+cli = ["rich", "typer"]
+all = ["rich", "typer"]
+
+[tool.poetry.scripts]
+poetry-demo = "poetry_demo.cli:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+# Tool configurations
+[tool.black]
+line-length = 88
+target-version = ['py38']
+include = '\.pyi?$'
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q --strict-markers --strict-config"
+testpaths = ["tests"]
+markers = [
+    "slow: marks tests as slow",
+    "integration: marks tests as integration tests",
+]
+
+[tool.coverage.run]
+source = ["poetry_demo"]
+omit = ["*/tests/*"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+]

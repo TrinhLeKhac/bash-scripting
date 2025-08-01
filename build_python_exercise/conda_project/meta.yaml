@@ -1,0 +1,53 @@
+{% set name = "conda-demo" %}
+{% set version = "1.0.0" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  path: ../
+
+build:
+  number: 0
+  script: {{ PYTHON }} -m pip install . -vv
+  entry_points:
+    - conda-demo = conda_demo.cli:main
+
+requirements:
+  host:
+    - python >=3.8
+    - pip
+    - setuptools
+    - wheel
+  run:
+    - python >=3.8
+    - requests >=2.28.0
+    - click >=8.0.0
+    - pydantic >=1.10.0
+
+test:
+  imports:
+    - conda_demo
+  commands:
+    - conda-demo --help
+  requires:
+    - pytest >=7.0.0
+    - pytest-cov >=4.0.0
+
+about:
+  home: https://github.com/example/conda-demo
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Conda packaging demo for scientific Python
+  description: |
+    This package demonstrates how to create conda packages
+    for scientific Python applications with proper dependency
+    management and cross-platform support.
+  doc_url: https://conda-demo.readthedocs.io
+  dev_url: https://github.com/example/conda-demo
+
+extra:
+  recipe-maintainers:
+    - demo-author
