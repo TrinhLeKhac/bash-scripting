@@ -2,7 +2,7 @@
 # Demonstrates different build strategies
 
 # Stage 1: Build stage with full development environment
-FROM python:3.11-slim as builder
+FROM python:3.11-slim AS builder
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1 \
@@ -30,13 +30,13 @@ RUN pip install --upgrade pip && \
 
 # Copy source code
 COPY src/ ./src/
-COPY setup.py pyproject.toml README.md ./
+COPY setup.py pyproject.toml ./
 
 # Build the package
 RUN pip install .
 
 # Stage 2: Production stage with minimal runtime
-FROM python:3.11-slim as production
+FROM python:3.11-slim AS production
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1 \
@@ -67,10 +67,10 @@ HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
 EXPOSE 8000
 
 # Default command
-CMD ["python", "-m", "demo_app"]
+CMD ["demo-app"]
 
 # Stage 3: Development stage with additional tools
-FROM builder as development
+FROM builder AS development
 
 # Install development dependencies
 RUN pip install pytest pytest-cov black flake8 mypy ipython jupyter
@@ -90,4 +90,4 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Default command for development
-CMD ["python", "-m", "demo_app", "--debug"]
+CMD ["demo-app", "--debug"]
