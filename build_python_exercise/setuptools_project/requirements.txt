@@ -6,3 +6,8 @@ pydantic>=1.10.0
 # Optional dependencies
 rich>=12.0.0  # For beautiful terminal output
 typer>=0.7.0  # For CLI applications
+
+# Development dependencies
+pytest>=6.0.0
+wheel>=0.37.0
+setuptools>=65.0.0
