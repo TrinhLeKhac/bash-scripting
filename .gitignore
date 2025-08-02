@@ -164,7 +164,11 @@ metrics/
 monitoring/
 *.metrics
 
-# STEP 24: Custom project ignores
+# STEP 24: Flit project specific ignores
+*.egg-info/
+.mypy_cache/
+
+# STEP 25: Custom project ignores
 # Add any project-specific files to ignore below
 test.txt
 sample.log
