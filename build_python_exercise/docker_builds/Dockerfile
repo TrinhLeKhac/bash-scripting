@@ -20,15 +20,17 @@ RUN apt-get update && apt-get install -y \
 RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
+# Set working directory first
+WORKDIR /app
+
 # Copy requirements and install Python dependencies
 COPY requirements.txt .
 RUN pip install --upgrade pip && \
     pip install -r requirements.txt
 
 # Copy source code
-COPY src/ /app/src/
-COPY setup.py pyproject.toml README.md /app/
-WORKDIR /app
+COPY src/ ./src/
+COPY setup.py pyproject.toml README.md ./
 
 # Build the package
 RUN pip install .
