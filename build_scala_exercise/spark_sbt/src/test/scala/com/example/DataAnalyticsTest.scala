@@ -1,16 +1,14 @@
 package com.example
 
 import org.scalatest.funsuite.AnyFunSuite
-import org.scalatest.BeforeAndAfterAll
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions._
 import org.apache.spark.sql.types._
-import com.holdenkarau.spark.testing.DataFrameSuiteBase
 
 /**
  * Test suite for DataAnalytics application
  */
-class DataAnalyticsTest extends AnyFunSuite with DataFrameSuiteBase {
+class DataAnalyticsTest extends AnyFunSuite {
   
   test("DataAnalytics should calculate revenue correctly") {
     val spark = SparkSession.builder()
@@ -80,23 +78,18 @@ class DataAnalyticsTest extends AnyFunSuite with DataFrameSuiteBase {
           avg("price").as("avg_price")
         )
         .collect()
-        .map(row => (
-          row.getString(0),
-          row.getDouble(1),
-          row.getLong(2),
-          row.getDouble(3)
-        ))
+        .map(row => row.getString(0) -> (row.getDouble(1), row.getLong(2), row.getDouble(3)))
         .toMap
       
       // North region: (2*100) + (1*200) = 400
-      assert(regionalAnalysis("North")._2 == 400.0)
-      assert(regionalAnalysis("North")._3 == 2) // 2 unique products
-      assert(regionalAnalysis("North")._4 == 150.0) // avg price (100+200)/2
+      assert(regionalAnalysis("North")._1 == 400.0)
+      assert(regionalAnalysis("North")._2 == 2) // 2 unique products
+      assert(regionalAnalysis("North")._3 == 150.0) // avg price (100+200)/2
       
       // South region: (3*50) + (1*75) = 225
-      assert(regionalAnalysis("South")._2 == 225.0)
-      assert(regionalAnalysis("South")._3 == 2) // 2 unique products
-      assert(regionalAnalysis("South")._4 == 62.5) // avg price (50+75)/2
+      assert(regionalAnalysis("South")._1 == 225.0)
+      assert(regionalAnalysis("South")._2 == 2) // 2 unique products
+      assert(regionalAnalysis("South")._3 == 62.5) // avg price (50+75)/2
       
     } finally {
       spark.stop()
@@ -189,8 +182,6 @@ class DataAnalyticsTest extends AnyFunSuite with DataFrameSuiteBase {
       .appName("EmptyDataTest")
       .master("local[*]")
       .getOrCreate()
-    
-    import spark.implicits._
     
     try {
       val schema = StructType(Array(

@@ -171,8 +171,141 @@ conda-dist/
 conda_demo.egg-info/
 flit_demo.egg-info/
 
-# STEP 25: Custom project ignores
+# Poetry specific files
+poetry.lock
+.venv/
+pyproject.toml.bak
+
+# STEP 25: Scala/SBT specific ignores
+# SBT build outputs
+target/
+project/target/
+project/project/
+
+# SBT plugins and cache
+.sbt/
+.ivy2/
+.cache-main
+.cache-tests
+
+# IDE specific (Scala)
+.bsp/
+.metals/
+metals.sbt
+.scala-build/
+
+# SBT configuration
+.sbtopts
+
+# Scala worksheets
+*.sc
+
+# Assembly plugin
+assembly.sbt
+
+# Coverage reports
+scoverage-data/
+scoverage-report/
+
+# Mill build tool
+out/
+
+# Gradle (for Scala projects)
+.gradle/
+gradle-app.setting
+!gradle-wrapper.jar
+!gradle-wrapper.properties
+
+# Maven (for Scala projects)
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# STEP 26: Custom project ignores
 # Add any project-specific files to ignore below
 test.txt
 sample.log
 output.txt
+sample_data.csv
+*.jar
+*.war
+*.class
+
+# Build Python exercise outputs
+build_python_exercise/etl_examples/output/
+build_python_exercise/etl_examples/data/generated_*
+build_python_exercise/etl_examples/venv/
+build_python_exercise/etl_examples/extracted/
+build_python_exercise/etl_examples/warehouse/
+build_python_exercise/poetry_project/.venv/
+build_python_exercise/setuptools_project/venv/
+build_python_exercise/setuptools_project/test_env/
+build_python_exercise/setuptools_project/build/
+build_python_exercise/setuptools_project/dist/
+build_python_exercise/setuptools_project/*.egg-info/
+build_python_exercise/setuptools_project/.coverage
+build_python_exercise/setuptools_project/htmlcov/
+build_python_exercise/wheel_builds/venv/
+build_python_exercise/wheel_builds/test_env/
+build_python_exercise/wheel_builds/build/
+build_python_exercise/wheel_builds/dist/
+build_python_exercise/wheel_builds/*.egg-info/
+build_python_exercise/wheel_builds/.coverage
+build_python_exercise/wheel_builds/htmlcov/
+build_python_exercise/wheel_builds/wheel-demo
+build_python_exercise/wheel_builds/.pytest_cache/
+build_python_exercise/wheel_builds/=65.0.0
+
+# Build Scala exercise outputs
+build_scala_exercise/sbt_project/target/
+build_scala_exercise/sbt_project/project/target/
+build_scala_exercise/sbt_project/project/project/
+build_scala_exercise/sbt_project/.bsp/
+build_scala_exercise/sbt_project/.metals/
+build_scala_exercise/sbt_project/metals.sbt
+build_scala_exercise/sbt_project/.sbtopts
+build_scala_exercise/assembly_builds/target/
+build_scala_exercise/assembly_builds/project/target/
+build_scala_exercise/fat_jar_builds/target/
+build_scala_exercise/fat_jar_builds/project/target/
+build_scala_exercise/gradle_project/build/
+build_scala_exercise/gradle_project/.gradle/
+build_scala_exercise/maven_project/target/
+build_scala_exercise/mill_project/out/
+build_scala_exercise/spark_sbt/target/
+build_scala_exercise/spark_sbt/project/target/
+build_scala_exercise/spark_sbt/project/project/
+build_scala_exercise/spark_sbt/.bsp/
+build_scala_exercise/spark_sbt/.metals/
+build_scala_exercise/spark_sbt/metals.sbt
+build_scala_exercise/spark_sbt/.scala-build/
+build_scala_exercise/spark_sbt/scoverage-data/
+build_scala_exercise/spark_sbt/scoverage-report/
+build_scala_exercise/spark_sbt/*.jar
+build_scala_exercise/spark_sbt/*.log
+build_scala_exercise/spark_sbt/spark-warehouse/
+build_scala_exercise/spark_sbt/metastore_db/
+build_scala_exercise/spark_sbt/derby.log
+build_scala_exercise/spark_gradle/build/
+build_scala_exercise/spark_gradle/.gradle/
+build_scala_exercise/spark_maven/target/
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# PySpark specific
+spark-warehouse/
+metastore_db/
+derby.log
+
+# PyInstaller builds
+pyinstaller_builds/
+*.spec
+build/
+dist/

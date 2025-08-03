@@ -1,15 +1,13 @@
 package com.example
 
 import org.scalatest.funsuite.AnyFunSuite
-import org.scalatest.BeforeAndAfterAll
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions._
-import com.holdenkarau.spark.testing.DataFrameSuiteBase
 
 /**
  * Test suite for WordCount application
  */
-class WordCountTest extends AnyFunSuite with DataFrameSuiteBase {
+class WordCountTest extends AnyFunSuite {
   
   test("WordCount should count words correctly") {
     val spark = SparkSession.builder()
